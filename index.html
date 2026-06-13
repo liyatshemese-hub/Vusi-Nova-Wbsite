@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vusi Nova — Official</title>
     <meta name="description" content="Official Vusi Nova homepage with latest music, biography, videos and bookings information." />
+    <meta property="og:title" content="Vusi Nova — Official" />
+    <meta property="og:description" content="Welcome to Vusi Nova's official website. Explore his latest music, biography, and upcoming bookings." />
+    <meta property="og:image" content="images/vusi.webp" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vusinova.com/" />
+    <link rel="canonical" href="https://vusinova.com/" />
     <link rel="icon" href="images/vusi.webp" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -52,10 +58,38 @@
         </div>
       </div>
       </footer>
+      <video id="bg-video" autoplay muted loop playsinline>
+        <source src="./images/Vusi Nova & Anthony Hamilton - Black Sweater (Official Music Video).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
 </section>
 
     <script>
       document.documentElement.classList.add('vusi');
+    </script>
+    <script>
+      const video = document.getElementById('bg-video');
+      const startTime = 30; // seconds
+      const endTime = 45;   // seconds
+
+      if (video) {
+        video.addEventListener('loadedmetadata', () => {
+          video.currentTime = startTime;
+          video.play();
+        });
+
+        video.addEventListener('timeupdate', () => {
+          if (video.currentTime >= endTime) {
+            video.currentTime = startTime; // loop the clip
+            video.play();
+          }
+        });
+
+        // Try to play immediately (may be blocked by browser)
+        video.play().catch(() => {
+          console.log('Autoplay blocked - user interaction may be required');
+        });
+      }
     </script>
 
 </body>
