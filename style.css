@@ -498,3 +498,24 @@ a:focus-visible {
   height: 100%;
   min-height: 200px; /* ensures video is visible */
 }
+/* Dark overlay for all sections */
+.music::before,
+.bio::before,
+.videos::before,
+.blog::before,
+.bookings::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65); /* adjust darkness here */
+  z-index: 0;
+}
+
+.music > *,
+.bio > *,
+.videos > *,
+.blog > *,
+.bookings > * {
+  position: relative;
+  z-index: 1;
+}
